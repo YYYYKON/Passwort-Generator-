@@ -1,13 +1,22 @@
+import streamlit as st
 import random
 
-zeichen = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-passwort = ""
+st.title("🔐 Passwort Generator")
 
-antwort = input("Sonderzeichen benutzen? (ja/nein):")
-if antwort == "ja":
-    zeichen += "@&€?!$£¥#%"
+laenge = st.slider("Länge", 4, 30, 12)
+
+sonderzeichen = st.checkbox("Sonderzeichen benutzen")
+
+if st.button("Generieren"):
+    zeichen = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
+
+    if sonderzeichen:
+        zeichen += "€&@?!$£¥#%"
     
-for i in range(12):
-    passwort += random.choice(zeichen)
-    
-print("Dein Passwort:", passwort)
+    passwort = ""
+
+    for i in range(aenge):
+        passwort += random.choice(zeichen)
+
+    st.success(passwort)
